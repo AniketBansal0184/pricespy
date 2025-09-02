@@ -17,6 +17,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Hamilton Beach Electric Indoor Searing Grill with Viewing Window & Adjustable Temperature Control Stainless Steel",
             price: 199,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "Non-stick grilling surface",
@@ -32,6 +33,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Indoor Smokeless Electric Grill for Kabob Skewers - XHJ Indoor Tabletop BBQ Grill Smokeless",
             price: 599,
+            rating: 1.7,
             dealUrl: "",
             features: [
               "Smokeless grilling technology",
@@ -47,6 +49,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Indoor Smokeless Electric Grill for Kabob Skewers - XHJ Indoor Tabletop BBQ Grill Smokeless",
             price: 699,
+            rating: 4.8,
             dealUrl: "",
             features: [
               "Smokeless grilling technology",
@@ -62,6 +65,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Indoor Smokeless Electric Grill for Kabob Skewers - XHJ Indoor Tabletop BBQ Grill Smokeless",
             price: 799,
+            rating: 1.4,
             dealUrl: "",
             features: [
               "Advanced smokeless technology",
@@ -77,6 +81,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Indoor Smokeless Electric Grill for Kabob Skewers - XHJ Indoor Tabletop BBQ Grill Smokeless",
             price: 899,
+            rating: 2.4,
             dealUrl: "",
             features: [
               "Premium smokeless grilling",
@@ -92,6 +97,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Mixing Bowls with Airtight Lids Set, 26PCS Stainless Steel Khaki Bowls with Grater Attachments Kitchen Gadgets",
             price: 255,
+            rating: 4.8,
             dealUrl: "",
             features: [
               "26-piece set with graters",
@@ -107,6 +113,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Mixing Bowls with Airtight Lids, Stainless Steel Mixing Bowl Set with 3 Metal Nesting Bowls, Colander & Grater",
             price: 271,
+            rating: 4.2,
             dealUrl: "",
             features: [
               "3 nesting stainless steel bowls",
@@ -122,6 +129,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Ninja NC301 CREAMi Ice Cream Maker, for Gelato, Mix-ins, Milkshakes, Sorbet, Smoothie Bowls & More, 7 One-Touch",
             price: 237,
+            rating: 1.9,
             dealUrl: "",
             features: [
               "7 one-touch programs",
@@ -137,6 +145,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "Portable Blender, Cordless, Personal Blender-for Shakes & Smoothies, BPA Free, Leakproof, USB-C Rechargeable",
             price: 99,
+            rating: 3.9,
             dealUrl: "",
             features: [
               "Cordless and portable",
@@ -152,6 +161,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "XYJ Professional Kitchen Knife Set with High-Carbon Steel Forged Blades, Chefs Knife, Cleaver, Carving Knife",
             price: 500,
+            rating: 2.5,
             dealUrl: "",
             features: [
               "High-carbon steel forged blades",
@@ -167,6 +177,7 @@ export const categories: Category[] = [
             subcategory: "Kitchen Appliances",
             name: "YIHONG 7 Piece Mixing Bowls with Lids for Kitchen, Stainless Steel Mixing Bowls Set Ideal for Baking, Cooking",
             price: 300,
+            rating: 4.7,
             dealUrl: "",
             features: [
               "7-piece stainless steel set",
@@ -196,6 +207,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Basics Microwave bundle with Echo Dot",
             price: 180,
+            rating: 2.7,
             dealUrl: "",
             features: [
               "Microwave with voice control via Echo Dot",
@@ -211,6 +223,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Chefman 6.3 Quart Digital Air Fryer",
             price: 160,
+            rating: 4.4,
             dealUrl: "",
             features: [
               "6.3-quart capacity",
@@ -226,6 +239,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Electric Hot Water Pot with Safety Lock",
             price: 55,
+            rating: 3.7,
             dealUrl: "",
             features: [
               "Safety lock feature",
@@ -241,6 +255,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Electric LED Digital Display Oven",
             price: 170,
+            rating: 4.9,
             dealUrl: "",
             features: [
               "LED digital display",
@@ -256,6 +271,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Hamilton Beach FlexBrew Trio Coffee Maker",
             price: 120,
+            rating: 3.1,
             dealUrl: "",
             features: [
               "3-in-1 brewing (pod, grounds, carafe)",
@@ -271,6 +287,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Programmable Coffee Maker with Glass Carafe",
             price: 170,
+            rating: 1.2,
             dealUrl: "",
             features: [
               "24-hour programmable timer for automatic brewing",
@@ -287,6 +304,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Slowstar Cold Press Masticating Juice Extractor",
             price: 60,
+            rating: 1.3,
             dealUrl: "",
             features: [
               "Cold press juicing technology",
@@ -302,6 +320,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "Top Freezer Apartment Size Refrigerator Stainless",
             price: 199,
+            rating: 4.6,
             dealUrl: "",
             features: [
               "Compact apartment-size design",
@@ -317,6 +336,7 @@ export const categories: Category[] = [
             subcategory: "Fruit Machine",
             name: "TOSHIBA Electric Rice Cooker Model 18NMFIAN",
             price: 199,
+            rating: 1.9,
             dealUrl: "",
             features: [
               "Multiple cooking functions",
@@ -346,6 +366,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Basics Ergonomic Wireless PC Mouse",
             price: 60,
+            rating: 3.3,
             dealUrl: "",
             features: [
               "Ergonomic design for comfort",
@@ -361,6 +382,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Canon Digital Camera w/ 42x Optical Zoom",
             price: 56,
+            rating: 1.4,
             dealUrl: "",
             features: [
               "42x optical zoom",
@@ -376,6 +398,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Edifier R1280T Powered Bookshelf Speakers",
             price: 40,
+            rating: 4.3,
             dealUrl: "",
             features: [
               "40W total power output",
@@ -391,6 +414,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "JAR-OWL 2021 New PS4 Controller Gamepad",
             price: 250,
+            rating: 3.0,
             dealUrl: "",
             features: [
               "Compatible with PS4",
@@ -406,6 +430,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Naturtint Anti-Ageing CC Cream by Naturtint",
             price: 240,
+            rating: 2.7,
             dealUrl: "",
             features: [
               "Anti-ageing formula",
@@ -421,6 +446,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Outdoor Security Camera Wireless, 1080p Full HD",
             price: 240,
+            rating: 4.4,
             dealUrl: "",
             features: [
               "1080p Full HD resolution",
@@ -436,6 +462,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Polk Audio 100 Watt Home Theater Speakers",
             price: 120,
+            rating: 2.6,
             dealUrl: "",
             features: [
               "100W power output",
@@ -451,6 +478,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Portable Wireless Speaker with Microphone",
             price: 150,
+            rating: 3.7,
             dealUrl: "",
             features: [
               "Built-in microphone for calls",
@@ -466,6 +494,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Sony DSCHX8 High Zoom Point & Shoot Camera",
             price: 110,
+            rating: 2.1,
             dealUrl: "",
             features: [
               "High zoom capability",
@@ -481,6 +510,7 @@ export const categories: Category[] = [
             subcategory: "Non-fiction",
             name: "Verbatim Optical Mouse USB Accessibility",
             price: 30,
+            rating: 4.1,
             dealUrl: "",
             features: [
               "USB plug-and-play",
@@ -697,6 +727,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Canon Digital Camera w/ 42x Optical Zoom",
             price: 56,
+            rating: 1.7,
             dealUrl: "",
             features: [
               "42x optical zoom",
@@ -712,6 +743,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Canon EF 85mm f/1.8 USM Medium Telephoto Lens",
             price: 99,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "85mm focal length",
@@ -727,6 +759,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Friendly Zoom Digital Camera, 5X Optical Zoom",
             price: 180,
+            rating: 4.1,
             dealUrl: "",
             features: [
               "5x optical zoom",
@@ -742,6 +775,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "NATIONAL GEOGRAPHIC Amazing Chemistry Set - Chemistry Kit with 100+ Science Experiments",
             price: null,
+            rating: 3.5,
             dealUrl: "",
             features: [
               "Over 100 science experiments",
@@ -757,6 +791,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Naturtint Anti-Ageing CC Cream by Naturtint",
             price: 240,
+            rating: 2.7,
             dealUrl: "",
             features: [
               "Anti-ageing formula",
@@ -772,6 +807,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Outdoor Security Camera Wireless, 1080p Full HD",
             price: 240,
+            rating: 3.0,
             dealUrl: "",
             features: [
               "1080p Full HD resolution",
@@ -787,6 +823,7 @@ export const categories: Category[] = [
             subcategory: "Digital Camera",
             name: "Sony DSCHX8 High Zoom Point & Shoot Camera",
             price: 110,
+            rating: 3.5,
             dealUrl: "",
             features: [
               "High zoom capability",
@@ -809,6 +846,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "12 in 1 Solar Robot Kit, DIY Solar Power Building Kit with Solar Panel and Battery Power for Kids 8,9",
             price: null,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "12 different robot builds",
@@ -824,6 +862,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "Canon Digital Camera w/ 42x Optical Zoom",
             price: 56,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "42x optical zoom",
@@ -839,6 +878,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "Canon EF 85mm f/1.8 USM Medium Telephoto Lens",
             price: 99,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "85mm focal length",
@@ -854,6 +894,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "Friendly Zoom Digital Camera, 5X Optical Zoom",
             price: 180,
+            rating: 4.6,
             dealUrl: "",
             features: [
               "5x optical zoom",
@@ -869,6 +910,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "Outdoor Security Camera Wireless, 1080p Full HD",
             price: 240,
+            rating: 5.0,
             dealUrl: "",
             features: [
               "1080p Full HD resolution",
@@ -884,6 +926,7 @@ export const categories: Category[] = [
             subcategory: "Printers",
             name: "Sony DSCHX8 High Zoom Point & Shoot Camera",
             price: 110,
+            rating: 3.6,
             dealUrl: "",
             features: [
               "High zoom capability",
@@ -906,6 +949,7 @@ export const categories: Category[] = [
             subcategory: "USBs",
             name: "Canon Digital Camera w/ 42x Optical Zoom",
             price: 56,
+            rating: 1.7,
             dealUrl: "",
             features: [
               "42x optical zoom",
@@ -921,6 +965,7 @@ export const categories: Category[] = [
             subcategory: "USBs",
             name: "Canon EF 85mm f/1.8 USM Medium Telephoto Lens",
             price: 99,
+            rating: 4.0,
             dealUrl: "",
             features: [
               "85mm focal length",
@@ -936,6 +981,7 @@ export const categories: Category[] = [
             subcategory: "USBs",
             name: "Friendly Zoom Digital Camera, 5X Optical Zoom",
             price: 180,
+            rating: 4.5,
             dealUrl: "",
             features: [
               "5x optical zoom",
@@ -951,6 +997,7 @@ export const categories: Category[] = [
             subcategory: "USBs",
             name: "Sony DSCHX8 High Zoom Point & Shoot Camera",
             price: 110,
+            rating: 2.9,
             dealUrl: "",
             features: [
               "High zoom capability",
@@ -980,6 +1027,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Canon Digital Camera w/ 42x Optical Zoom",
             price: 56,
+            rating: 3.3,
             dealUrl: "",
             features: [
               "42x optical zoom",
@@ -995,6 +1043,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Canon EF 85mm f/1.8 USM Medium Telephoto Lens",
             price: 99,
+            rating: 2.2,
             dealUrl: "",
             features: [
               "85mm focal length",
@@ -1010,6 +1059,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Edifier R1280T Powered Bookshelf Speakers",
             price: 40,
+            rating: 3.8,
             dealUrl: "",
             features: [
               "40W total power output",
@@ -1025,6 +1075,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Naturtint Anti-Ageing CC Cream by Naturtint",
             price: 240,
+            rating: 1.7,
             dealUrl: "",
             features: [
               "Anti-ageing formula",
@@ -1040,6 +1091,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Outdoor Security Camera Wireless, 1080p Full HD",
             price: 240,
+            rating: 1.4,
             dealUrl: "",
             features: [
               "1080p Full HD resolution",
@@ -1055,6 +1107,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "PlayStation 2 Console (Slim Line Version 1)",
             price: 30,
+            rating: 3.4,
             dealUrl: "",
             features: [
               "Slim and lightweight design",
@@ -1070,6 +1123,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "PlayStation 2 Console (Slim Line Version 1)",
             price: 90,
+            rating: 2.7,
             dealUrl: "",
             features: [
               "Slim and lightweight design",
@@ -1085,6 +1139,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Portable Wireless Speaker with Microphone",
             price: 150,
+            rating: 5.0,
             dealUrl: "",
             features: [
               "Built-in microphone for calls",
@@ -1100,6 +1155,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Sony DSCHX8 High Zoom Point & Shoot Camera",
             price: 110,
+            rating: 2.1,
             dealUrl: "",
             features: [
               "High zoom capability",
@@ -1115,6 +1171,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Sony Playstation 3 160GB System",
             price: 90,
+            rating: 4.9,
             dealUrl: "",
             features: [
               "160GB storage capacity",
@@ -1130,6 +1187,7 @@ export const categories: Category[] = [
             subcategory: "Backup Charger",
             name: "Women’s 3-in-1 Winter Ski Jacket Outdoor",
             price: 400,
+            rating: 2.9,
             dealUrl: "",
             features: [
               "3-in-1 layered design",
@@ -1159,6 +1217,7 @@ export const categories: Category[] = [
             subcategory: "Cordless Vacuums",
             name: "Dell OptiPlex 7000 7480 All-in-One Computer",
             price: 40,
+            rating: 4.7,
             dealUrl: "",
             features: [
               "All-in-one desktop design",
@@ -1174,6 +1233,7 @@ export const categories: Category[] = [
             subcategory: "Cordless Vacuums",
             name: "Pro Gaming PC Computer Desktop Trace 4",
             price: 120,
+            rating: 1.4,
             dealUrl: "",
             features: [
               "High-performance gaming CPU",
@@ -1196,6 +1256,7 @@ export const categories: Category[] = [
             subcategory: "Robot Vacuums",
             name: "Basics Ergonomic Wireless PC Mouse",
             price: 60,
+            rating: 2.4,
             dealUrl: "",
             features: [
               "Ergonomic design for comfort",
@@ -1211,6 +1272,7 @@ export const categories: Category[] = [
             subcategory: "Robot Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 750,
+            rating: 3.4,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",
@@ -1226,6 +1288,7 @@ export const categories: Category[] = [
             subcategory: "Robot Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 950,
+            rating: 3.4,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",
@@ -1241,6 +1304,7 @@ export const categories: Category[] = [
             subcategory: "Robot Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 850,
+            rating: 3.9,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",
@@ -1263,6 +1327,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Chromebook 14-inch Laptop, Intel Celeron N4000",
             price: 700,
+            rating: 4.3,
             dealUrl: "",
             features: [
               "14-inch HD display",
@@ -1278,6 +1343,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Chromebook 14-inch Laptop, Intel Celeron N4000",
             price: 800,
+            rating: 2.0,
             dealUrl: "",
             features: [
               "14-inch HD display",
@@ -1293,6 +1359,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Chromebook 14-inch Laptop, Intel Celeron N4000",
             price: 900,
+            rating: 1.1,
             dealUrl: "",
             features: [
               "14-inch HD display",
@@ -1308,6 +1375,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Chromebook 14-inch Laptop, Intel Celeron N4000",
             price: 999,
+            rating: 3.2,
             dealUrl: "",
             features: [
               "14-inch HD display",
@@ -1323,6 +1391,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Dell OptiPlex 7000 7480 All-in-One Computer",
             price: 40,
+            rating: 4.3,
             dealUrl: "",
             features: [
               "All-in-one desktop design",
@@ -1338,6 +1407,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Pro Gaming PC Computer Desktop Trace 4",
             price: 120,
+            rating: 3.9,
             dealUrl: "",
             features: [
               "High-performance gaming CPU",
@@ -1353,6 +1423,7 @@ export const categories: Category[] = [
             subcategory: "Steam Cleaners",
             name: "Verbatim Optical Mouse USB Accessibility",
             price: 30,
+            rating: 4.7,
             dealUrl: "",
             features: [
               "USB plug-and-play",
@@ -1375,6 +1446,7 @@ export const categories: Category[] = [
             subcategory: "Upright Vacuums",
             name: "Verbatim Optical Mouse USB Accessibility",
             price: 30,
+            rating: 2.8,
             dealUrl: "",
             features: [
               "USB plug-and-play",
@@ -1397,6 +1469,7 @@ export const categories: Category[] = [
             subcategory: "Wet/Dry Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 750,
+            rating: 2.7,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",
@@ -1412,6 +1485,7 @@ export const categories: Category[] = [
             subcategory: "Wet/Dry Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 950,
+            rating: 1.8,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",
@@ -1427,6 +1501,7 @@ export const categories: Category[] = [
             subcategory: "Wet/Dry Vacuums",
             name: "Microsoft Surface Laptop 3-15” Touch-Screen",
             price: 850,
+            rating: 4.7,
             dealUrl: "",
             features: [
               "15-inch touchscreen display",

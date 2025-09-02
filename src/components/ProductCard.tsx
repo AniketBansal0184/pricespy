@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, BarChart3 } from 'lucide-react';
+import { ExternalLink, BarChart3, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,6 +28,33 @@ export const ProductCard = ({
     e.preventDefault();
     e.stopPropagation();
     onCompare?.(product);
+  };
+
+  const renderStars = (rating: number) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(
+        <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+      );
+    }
+
+    if (hasHalfStar) {
+      stars.push(
+        <Star key="half" className="w-3 h-3 fill-yellow-400/50 text-yellow-400" />
+      );
+    }
+
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(
+        <Star key={`empty-${i}`} className="w-3 h-3 text-gray-300" />
+      );
+    }
+
+    return stars;
   };
 
   return (
@@ -84,6 +111,18 @@ export const ProductCard = ({
               </>
             )}
           </div>
+
+          {/* Rating */}
+          {product.rating && (
+            <div className="flex items-center gap-1 mt-1">
+              <div className="flex">
+                {renderStars(product.rating)}
+              </div>
+              <span className="text-xs text-muted-foreground">
+                {product.rating}
+              </span>
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex gap-1 sm:gap-2 mt-auto pt-2">

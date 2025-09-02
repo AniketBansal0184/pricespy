@@ -3,7 +3,7 @@ import { ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { categories } from "@/data/categories";
-import { Category } from "@/types";
+import { Category, Product } from "@/types";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -38,21 +38,16 @@ export const Sidebar = ({
   return (
     <aside
       className={`
-    fixed top-24 bottom-0 left-0 z-40 w-72 sm:w-80 bg-background border-r border-border
+    fixed top-[calc(4.5rem+1px)] bottom-0 left-0 z-40 w-72 sm:w-80 bg-background border-r border-border
     transform transition-transform duration-300 ease-in-out
     ${isOpen ? "translate-x-0" : "-translate-x-full"}
   `}
     >
       {/* 🔑 Sidebar content full height with flex */}
       <div className="flex flex-col h-screen">
-        {/* Header */}
-        <div className="p-12 border-b border-border shrink-0">
-          <h2 className="font-semibold text-lg">Categories</h2>
-        </div>
-
         {/* Scrollable area */}
         <ScrollArea className="flex-1">
-          <div className="p-2 pb-20 mb-10">
+          <div className="p-3 mt-14">
             {categories.map((category: Category) => (
               <div key={category.id} className="mb-1">
                 {/* Category Header */}
@@ -102,6 +97,8 @@ export const Sidebar = ({
                 )}
               </div>
             ))}
+
+
           </div>
         </ScrollArea>
       </div>

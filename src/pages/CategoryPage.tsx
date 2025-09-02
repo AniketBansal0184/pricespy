@@ -245,10 +245,6 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
           )}
         </div>
       </div>
-
-      <section className="py-4 bg-yellow-100 text-center mb-6 rounded-lg">
-        <p className="text-lg font-medium">🎯 Advert Space - Promote Your Deal Here!</p>
-      </section>
     </div>
   );
 };
