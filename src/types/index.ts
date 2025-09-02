@@ -47,9 +47,9 @@
 
 
 export interface Product {
-  id?: string; // optional if coming from JSON without id
+  id?: string; 
   name: string;
-  price: number | null; // price can be null or number
+  price: number | null; 
   originalPrice?: number;
   image?: string;
   category: string;
@@ -57,7 +57,7 @@ export interface Product {
   brand?: string;
   rating?: number;
   reviewCount?: number;
-  dealUrl?: string; // optional for JSON like yours
+  dealUrl?: string; 
   store?: string;
   discount?: number;
   features?: string[];
