@@ -155,8 +155,8 @@ const App = () => {
     if (!user) return;
 
     try {
-      // Call the local Express server endpoint
-      const response = await fetch('http://localhost:3001/api/deleteUser', {
+      // Call the backend API endpoint
+      const response = await fetch(`https://pricespy-jl08xzcbv-aniket021978s-projects.vercel.app/api/deleteUser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
