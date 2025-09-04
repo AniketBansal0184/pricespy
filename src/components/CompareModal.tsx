@@ -120,11 +120,11 @@ export const CompareModal = ({
                     {p.price != null ? (
                       <>
                         <span className="font-bold text-blue-600 dark:text-blue-400">
-                          £{p.price}
+                          ${p.price}
                         </span>
                         {p.originalPrice && (
                           <div className="text-xs text-gray-500 line-through">
-                            £{p.originalPrice}
+                            ${p.originalPrice}
                           </div>
                         )}
                         {p.discount && (

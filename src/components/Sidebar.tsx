@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { categories } from "@/data/categories";
 import { Category, Product } from "@/types";
+import { X } from "lucide-react";
 
 interface SidebarProps {
   isOpen: boolean;
   onCategorySelect: (categoryId: string) => void;
   onSubcategorySelect: (categoryId: string, subcategoryId: string) => void;
   selectedCategory?: string;
+  onClose: () => void;
 }
 
 export const Sidebar = ({
@@ -17,6 +18,7 @@ export const Sidebar = ({
   onCategorySelect,
   onSubcategorySelect,
   selectedCategory,
+  onClose,
 }: SidebarProps) => {
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
 
@@ -38,22 +40,29 @@ export const Sidebar = ({
   return (
     <aside
       className={`
-    fixed top-[calc(4.5rem+1px)] bottom-0 left-0 z-40 w-72 sm:w-80 bg-background border-r border-border
+    fixed top-0 bottom-0 left-0 z-40 w-72 sm:w-80 bg-background border-r border-border
     transform transition-transform duration-300 ease-in-out
     ${isOpen ? "translate-x-0" : "-translate-x-full"}
   `}
     >
       {/* 🔑 Sidebar content full height with flex */}
       <div className="flex flex-col h-screen">
+        {/* Header */}
+        <div className="flex justify-between items-center p-4 border-b border-border">
+          <h2 className="text-lg font-semibold">Categories</h2>
+          <Button variant="ghost" size="icon" onClick={onClose}>
+            <X className="w-5 h-5" />
+          </Button>
+        </div>
         {/* Scrollable area */}
-        <ScrollArea className="flex-1">
-          <div className="p-3 mt-14">
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-1">
             {categories.map((category: Category) => (
               <div key={category.id} className="mb-1">
                 {/* Category Header */}
                 <Button
                   variant="ghost"
-                  className={`w-full justify-between text-left h-auto p-3 ${
+                  className={`w-full justify-between text-left h-auto p-4 ${
                     selectedCategory === category.id
                       ? "bg-accent text-accent-foreground"
                       : ""
@@ -100,7 +109,7 @@ export const Sidebar = ({
 
 
           </div>
-        </ScrollArea>
+        </div>
       </div>
     </aside>
   );

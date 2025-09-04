@@ -4,21 +4,27 @@ import { TrendingUp, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { ProductCard } from "@/components/ProductCard";
-import { AuthModal } from "@/components/AuthModal";
+
 import { featuredProducts } from "@/data/products";
 import { Product, CompareProduct } from "@/types";
+import type { User } from "@supabase/supabase-js";
 
 interface IndexProps {
   compareProducts: CompareProduct[];
   onCompareToggle: (product: Product) => void;
   authModalOpen: boolean;
   setAuthModalOpen: (open: boolean) => void;
+  user: User | null;
 }
 
-const Index = ({ compareProducts, onCompareToggle, authModalOpen, setAuthModalOpen }: IndexProps) => {
+const Index = ({ compareProducts, onCompareToggle, authModalOpen, setAuthModalOpen, user }: IndexProps) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryId: string) => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
     navigate(`/category/${categoryId}`);
   };
 
@@ -184,10 +190,7 @@ const Index = ({ compareProducts, onCompareToggle, authModalOpen, setAuthModalOp
         </div>
       </section>
 
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-      />
+
     </div>
   );
 };

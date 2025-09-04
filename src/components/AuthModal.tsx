@@ -9,7 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -33,20 +35,94 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
     confirmPassword: "",
   });
 
-  const handleSignIn = (e: React.FormEvent) => {
+  const { toast } = useToast();
+
+  const [loading, setLoading] = useState(false);
+
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign in logic
-    console.log("Sign in:", signInData);
-    // Close modal after successful sign in
-    onClose();
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: signInData.email,
+        password: signInData.password,
+      });
+      if (error) {
+        toast({
+          variant: "destructive",
+          title: "Sign in failed",
+          description: error.message,
+        });
+      } else {
+        toast({
+          title: "Signed in successfully",
+        });
+        onClose();
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Sign in failed",
+        description: "An unexpected error occurred.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSignUp = (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle sign up logic
-    console.log("Sign up:", signUpData);
-    // Close modal after successful sign up
-    onClose();
+    if (signUpData.password !== signUpData.confirmPassword) {
+      toast({
+        variant: "destructive",
+        title: "Passwords do not match",
+      });
+      return;
+    }
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: signUpData.email,
+        password: signUpData.password,
+        options: {
+          data: {
+            first_name: signUpData.firstName,
+            last_name: signUpData.lastName,
+          },
+          emailRedirectTo: process.env.NODE_ENV === 'production'
+            ? import.meta.env.VITE_PRODUCTION_DOMAIN || 'https://noeilnfdhmhidtuuyxdb.vercel.app'
+            : window.location.origin,
+        },
+      });
+      if (error) {
+        if (error.message.includes("User already registered")) {
+          toast({
+            variant: "destructive",
+            title: "Email already exists",
+            description: "Please sign in instead.",
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Sign up failed",
+            description: error.message,
+          });
+        }
+      } else {
+        toast({
+          title: "Account created successfully. Please check your email to confirm.",
+        });
+        onClose();
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Sign up failed",
+        description: "An unexpected error occurred.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -109,8 +185,15 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full">
-                Sign In
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Signing In...
+                  </>
+                ) : (
+                  "Sign In"
+                )}
               </Button>
             </form>
 
@@ -227,8 +310,15 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full">
-                Create Account
+              <Button type="submit" className="w-full" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Creating Account...
+                  </>
+                ) : (
+                  "Create Account"
+                )}
               </Button>
             </form>
           </TabsContent>

@@ -62,7 +62,7 @@ export const LastVisitedModal = ({
                 </p>
                 {product.price && (
                   <p className="text-sm font-bold text-blue-600 dark:text-blue-400">
-                    £{product.price}
+                    ${product.price}
                   </p>
                 )}
                 <Button

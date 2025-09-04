@@ -85,7 +85,12 @@ export const ProductCard = ({
           {product.name}
         </h3>
 
-        {/* Product Info */}
+        {/* Subcategory */}
+        {product.subcategory && (
+          <p className="text-xs text-muted-foreground text-center mb-1">
+            {product.subcategory}
+          </p>
+        )}
         <div className="space-y-1 sm:space-y-2 flex-1 flex flex-col">
           {/* Brand & Store */}
           <div className="flex justify-between text-xs text-muted-foreground">
@@ -96,12 +101,12 @@ export const ProductCard = ({
           {/* Price */}
           <div className="flex items-center gap-1 sm:gap-2 flex-wrap mt-1">
             <span className="font-bold text-sm sm:text-lg text-primary">
-              £{product.price}
+              ${product.price}
             </span>
             {product.originalPrice && (
               <>
                 <span className="text-xs sm:text-sm line-through text-muted-foreground">
-                  £{product.originalPrice}
+                  ${product.originalPrice}
                 </span>
                 {product.discount && (
                   <Badge variant="destructive" className="text-xs">

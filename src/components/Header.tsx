@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { NearbyStoresModal } from "@/components/NearbyStoresModal";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 interface HeaderProps {
@@ -19,10 +20,13 @@ interface HeaderProps {
   compareCount: number;
   onCompareClick: () => void;
   onAuthClick?: () => void;
+  onUserIconClick?: () => void;
   user?: SupabaseUser | null;
+  userMenuOpen?: boolean;
   onPopularClick?: () => void;
   onSearch?: (query: string) => void;
   onLastVisitedClick?: () => void;
+  onNearbyStoresClick?: () => void;
 }
 
 export const Header = ({
@@ -30,13 +34,17 @@ export const Header = ({
   compareCount,
   onCompareClick,
   onAuthClick,
+  onUserIconClick,
   user,
+  userMenuOpen,
   onPopularClick,
   onSearch,
   onLastVisitedClick,
+  onNearbyStoresClick,
 }: HeaderProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [isNearbyStoresOpen, setIsNearbyStoresOpen] = useState(false);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,7 +59,7 @@ export const Header = ({
         🔔 Advert Space – Place your top banner ad here
       </div>
 
-      <header className="bg-background border-b border-border sticky top-0 z-50">
+      <header className="bg-background border-b border-border sticky top-0 z-30">
         <div className="container mx-auto px-4">
           {/* Main Header */}
           <div className="flex items-center justify-between h-16">
@@ -157,7 +165,7 @@ export const Header = ({
                   variant="outline"
                   size="sm"
                   className="ml-2 w-8 h-8 rounded-full p-0"
-                  onClick={onAuthClick}
+                  onClick={onUserIconClick}
                 >
                   {user.email?.charAt(0).toUpperCase()}
                 </Button>
@@ -199,7 +207,12 @@ export const Header = ({
               <TrendingUp className="w-3 h-3 mr-1" />
               Popular Categories
             </Button>
-            <Button variant="ghost" size="sm" className="text-xs">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs"
+              onClick={onNearbyStoresClick}
+            >
               📍 Nearby Stores
             </Button>
             <Button variant="ghost" size="sm" className="text-xs">
@@ -208,6 +221,11 @@ export const Header = ({
           </div>
         </div>
       </header>
+
+      <NearbyStoresModal
+        isOpen={isNearbyStoresOpen}
+        onClose={() => setIsNearbyStoresOpen(false)}
+      />
     </>
   );
 };

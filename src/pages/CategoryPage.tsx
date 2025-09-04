@@ -14,6 +14,7 @@ import { Slider } from "@/components/ui/slider";
 import { ProductCard } from "@/components/ProductCard";
 import { categories } from "@/data/categories";
 import { Product, CompareProduct } from "@/types";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface CategoryPageProps {
   compareProducts: CompareProduct[];
@@ -33,6 +34,7 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
   const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState([0, 500]);
   const [sortBy, setSortBy] = useState("popularity");
+  const isMobile = useIsMobile();
 
 
 
@@ -135,7 +137,15 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
 
       <div className="flex gap-6">
         {/* Filters Sidebar */}
-        <div className={`w-80 flex-shrink-0 ${showFilters ? "block" : "hidden lg:block"}`}>
+        <div
+          className={`${
+            isMobile
+              ? `fixed top-0 left-0 z-40 w-72 bg-background border-r border-border transform transition-transform duration-300 ease-in-out ${
+                  showFilters ? "translate-x-0" : "-translate-x-full"
+                }`
+              : `w-80 flex-shrink-0 ${showFilters ? "block" : "hidden lg:block"}`
+          }`}
+        >
           <div className="bg-card rounded-lg border p-4 sticky top-24">
             <h3 className="font-semibold mb-4 flex items-center gap-2">
               <SlidersHorizontal className="w-4 h-4" />
@@ -167,8 +177,8 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
               <div className="px-2">
                 <Slider value={priceRange} onValueChange={setPriceRange} max={500} min={0} step={10} className="mb-2" />
                 <div className="flex justify-between text-sm text-muted-foreground">
-                  <span>£{priceRange[0]}</span>
-                  <span>£{priceRange[1]}</span>
+                  <span>${priceRange[0]}</span>
+                  <span>${priceRange[1]}</span>
                 </div>
               </div>
             </div>
@@ -191,7 +201,7 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
         {/* Main Content */}
         <div className="flex-1">
           {/* Controls */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col gap-4 mb-6 lg:flex-row lg:justify-between lg:items-center">
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm" onClick={() => setShowFilters(!showFilters)} className="lg:hidden">
                 <Filter className="w-4 h-4 mr-2" />
@@ -199,7 +209,7 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
               </Button>
 
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger className="w-full lg:w-48">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
@@ -221,6 +231,8 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
               </Button>
             </div>
           </div>
+
+
 
           {/* Products Grid */}
           <div className={`grid gap-4 ${viewMode === "grid" ? "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}>

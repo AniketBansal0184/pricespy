@@ -9,6 +9,20 @@ import { Sidebar } from "./components/Sidebar";
 import { CompareModal } from "./components/CompareModal";
 import { PopularProductModal } from "./components/PopularProductModal";
 import { LastVisitedModal } from "./components/LastVisitedModal";
+import { NearbyStoresModal } from "./components/NearbyStoresModal";
+import { AuthModal } from "./components/AuthModal";
+import { UserMenuSidebar } from "./components/UserMenuSidebar";
+import { EditProfileModal } from "./components/EditProfileModal";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import Index from "./pages/Index";
 import { CategoryPage } from "./pages/CategoryPage";
 import NotFound from "./pages/NotFound";
@@ -16,10 +30,12 @@ import { Product, CompareProduct } from "./types";
 import { supabase } from "./integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { categories } from "./data/categories";
+import { useToast } from "./hooks/use-toast";
 
 const queryClient = new QueryClient();
 
 const App = () => {
+  const { toast } = useToast();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [compareProducts, setCompareProducts] = useState<CompareProduct[]>([]);
   const [lastVisitedCompareProducts, setLastVisitedCompareProducts] = useState<CompareProduct[]>(() => {
@@ -37,6 +53,10 @@ const App = () => {
   const [user, setUser] = useState<User | null>(null);
   const [popularProduct, setPopularProduct] = useState<Product | null>(null);
   const [popularModalOpen, setPopularModalOpen] = useState(false);
+  const [isNearbyStoresOpen, setIsNearbyStoresOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [deleteAlertOpen, setDeleteAlertOpen] = useState(false);
 
   useEffect(() => {
     // Get initial session
@@ -51,7 +71,18 @@ const App = () => {
       }
     );
 
-    return () => subscription.unsubscribe();
+    // Listen for edit profile modal events
+    const handleOpenEditProfile = () => setEditModalOpen(true);
+    const handleCloseEditProfile = () => setEditModalOpen(false);
+
+    window.addEventListener("openEditProfileModal", handleOpenEditProfile);
+    window.addEventListener("closeEditProfileModal", handleCloseEditProfile);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener("openEditProfileModal", handleOpenEditProfile);
+      window.removeEventListener("closeEditProfileModal", handleCloseEditProfile);
+    };
   }, []);
 
   useEffect(() => {
@@ -68,6 +99,10 @@ const App = () => {
   }, [compareProducts]);
 
   const handleCompareToggle = (product: Product) => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
     setCompareProducts((prev) => {
       const existing = prev.find((p) => p.id === product.id);
       if (existing) {
@@ -83,6 +118,10 @@ const App = () => {
   };
 
   const handleCategorySelect = (categoryId: string) => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
     window.location.href = `/category/${categoryId}`;
   };
 
@@ -90,6 +129,10 @@ const App = () => {
     categoryId: string,
     subcategoryId: string
   ) => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
     window.location.href = `/category/${categoryId}?subcategory=${subcategoryId}`;
   };
 
@@ -97,9 +140,70 @@ const App = () => {
     setCompareProducts((prev) => prev.filter((p) => p.id !== productId));
   };
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setUserMenuOpen(false);
+  };
+
+  const handleDeleteProfile = () => {
+    if (!user) return;
+    setDeleteAlertOpen(true);
+  };
+
+  const confirmDeleteProfile = async () => {
+    if (!user) return;
+
+    try {
+      // Call the local Express server endpoint
+      const response = await fetch('http://localhost:3001/api/deleteUser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: user.id }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.message === 'User deleted successfully') {
+        // Successfully deleted user
+        toast({
+          title: "Profile Deleted",
+          description: "Your account has been permanently deleted. You will be redirected to the home page.",
+        });
+
+        // Sign out and clear user state
+        await supabase.auth.signOut();
+        setUser(null);
+        setUserMenuOpen(false);
+        setDeleteAlertOpen(false);
+
+        // Redirect to home page after a short delay
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+      } else {
+        throw new Error(data.error || 'Failed to delete profile');
+      }
+    } catch (error) {
+      console.error('Error deleting profile:', error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to delete profile. Please try again.";
+      toast({
+        title: "Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    }
+  };
+
   // ... rest unchanged
 
   const handlePopularClick = () => {
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
     // Find the highest rated product across all categories
     let highestRatedProduct: Product | null = null;
     let highestRating = 0;
@@ -183,10 +287,24 @@ const App = () => {
               compareCount={compareProducts.length}
               onCompareClick={() => setCompareModalOpen(true)}
               onAuthClick={() => setAuthModalOpen(true)}
+              onUserIconClick={() => setUserMenuOpen(!userMenuOpen)}
               user={user}
               onPopularClick={handlePopularClick}
               onSearch={handleSearch}
-              onLastVisitedClick={() => setLastVisitedModalOpen(true)}
+              onLastVisitedClick={() => {
+                if (!user) {
+                  setAuthModalOpen(true);
+                  return;
+                }
+                setLastVisitedModalOpen(true);
+              }}
+              onNearbyStoresClick={() => {
+                if (!user) {
+                  setAuthModalOpen(true);
+                  return;
+                }
+                setIsNearbyStoresOpen(true);
+              }}
             />
 
             <div className="flex">
@@ -194,6 +312,7 @@ const App = () => {
                 isOpen={sidebarOpen}
                 onCategorySelect={handleCategorySelect}
                 onSubcategorySelect={handleSubcategorySelect}
+                onClose={() => setSidebarOpen(false)}
               />
 
               {/* Overlay for mobile */}
@@ -214,6 +333,7 @@ const App = () => {
                         onCompareToggle={handleCompareToggle}
                         authModalOpen={authModalOpen}
                         setAuthModalOpen={setAuthModalOpen}
+                        user={user}
                       />
                     }
                   />
@@ -254,8 +374,49 @@ const App = () => {
                 window.location.href = `/category/${product.category}?subcategory=${product.subcategory}`;
               }}
             />
-          </div>
-        </BrowserRouter>
+
+            <NearbyStoresModal
+              isOpen={isNearbyStoresOpen}
+              onClose={() => setIsNearbyStoresOpen(false)}
+            />
+
+            <AuthModal
+              isOpen={authModalOpen}
+              onClose={() => setAuthModalOpen(false)}
+            />
+
+          <UserMenuSidebar
+            isOpen={userMenuOpen}
+            onClose={() => setUserMenuOpen(false)}
+            onLogout={handleLogout}
+            onDeleteProfile={handleDeleteProfile}
+          />
+
+          <EditProfileModal
+            isOpen={editModalOpen}
+            onClose={() => setEditModalOpen(false)}
+            user={user}
+          />
+
+          <AlertDialog open={deleteAlertOpen} onOpenChange={setDeleteAlertOpen}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete Profile</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure you want to delete your profile? This action cannot be undone.
+                  Your email: <strong>{user?.email}</strong>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction onClick={confirmDeleteProfile}>
+                  Delete Profile
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
