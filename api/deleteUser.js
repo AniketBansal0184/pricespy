@@ -7,7 +7,7 @@ const supabaseAdmin = createClient(
 
 export default async function handler(req, res) {
   // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', process.env.CORS_ORIGIN || 'https://pricespy-nine.vercel.app');
+  res.setHeader('Access-Control-Allow-Origin', process.env.VITE_PRODUCTION_DOMAIN || 'https://pricespy-nine.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
