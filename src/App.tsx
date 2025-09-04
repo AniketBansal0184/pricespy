@@ -156,7 +156,8 @@ const App = () => {
 
     try {
       // Call the backend API endpoint
-      const response = await fetch(`https://pricespy-jl08xzcbv-aniket021978s-projects.vercel.app/api/deleteUser`, {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://pricespy-jl08xzcbv-aniket021978s-projects.vercel.app';
+      const response = await fetch(`${apiBaseUrl}/api/deleteUser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
