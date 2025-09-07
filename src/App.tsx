@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
+import { Footer } from "./components/Footer";
 import { CompareModal } from "./components/CompareModal";
 import { PopularProductModal } from "./components/PopularProductModal";
 import { LastVisitedModal } from "./components/LastVisitedModal";
@@ -26,6 +27,13 @@ import {
 import Index from "./pages/Index";
 import { CategoryPage } from "./pages/CategoryPage";
 import NotFound from "./pages/NotFound";
+import AboutServices from "./pages/AboutServices";
+import PricesShipping from "./pages/PricesShipping";
+import FAQ from "./pages/FAQ";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import { Product, CompareProduct } from "./types";
 import { supabase } from "./integrations/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -347,6 +355,13 @@ const App = () => {
                       />
                     }
                   />
+                  <Route path="/about-services" element={<AboutServices />} />
+                  <Route path="/prices-shipping" element={<PricesShipping />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:id" element={<BlogPost />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
@@ -417,6 +432,7 @@ const App = () => {
             </AlertDialogContent>
           </AlertDialog>
         </div>
+        <Footer />
       </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

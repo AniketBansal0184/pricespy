@@ -207,7 +207,7 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
                 <Filter className="w-4 h-4 mr-2" />
                 Filters
               </Button>
-
+              
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-full lg:w-48">
                   <SelectValue placeholder="Sort by" />
@@ -234,17 +234,38 @@ export const CategoryPage = ({ compareProducts, onCompareToggle }: CategoryPageP
 
 
 
-          {/* Products Grid */}
-          <div className={`grid gap-4 ${viewMode === "grid" ? "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}>
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onCompare={onCompareToggle}
-                isSelected={isProductSelected(product.id)}
-                showCompare={true}
-              />
-            ))}
+          {/* Products Grid - Row-based layout for better comparison */}
+          <div className="space-y-6">
+            {viewMode === "grid" ? (
+              // Group products in rows of 3 for side-by-side comparison
+              Array.from({ length: Math.ceil(filteredProducts.length / 3) }, (_, rowIndex) => (
+                <div key={rowIndex} className="flex gap-4 justify-start">
+                  {filteredProducts.slice(rowIndex * 3, (rowIndex + 1) * 3).map((product) => (
+                    <div key={product.id} className="flex-1 max-w-sm">
+                      <ProductCard
+                        product={product}
+                        onCompare={onCompareToggle}
+                        isSelected={isProductSelected(product.id)}
+                        showCompare={true}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))
+            ) : (
+              // List view - single column
+              <div className="space-y-4">
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onCompare={onCompareToggle}
+                    isSelected={isProductSelected(product.id)}
+                    showCompare={true}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {filteredProducts.length === 0 && (

@@ -4,7 +4,6 @@ import { TrendingUp, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { ProductCard } from "@/components/ProductCard";
-
 import { featuredProducts } from "@/data/products";
 import { Product, CompareProduct } from "@/types";
 import type { User } from "@supabase/supabase-js";
@@ -189,10 +188,7 @@ const Index = ({ compareProducts, onCompareToggle, authModalOpen, setAuthModalOp
           </div>
         </div>
       </section>
-
-
     </div>
   );
 };
-
 export default Index;

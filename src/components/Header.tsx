@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Search,
   Menu,
@@ -8,6 +9,7 @@ import {
   ShoppingBag,
   User,
   X,
+  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -217,6 +219,12 @@ export const Header = ({
             </Button>
             <Button variant="ghost" size="sm" className="text-xs">
               🎒 Back To School
+            </Button>
+            <Button variant="ghost" size="sm" className="text-xs" asChild>
+              <Link to="/blog">
+                <BookOpen className="w-3 h-3 mr-1" />
+                Blog
+              </Link>
             </Button>
           </div>
         </div>
